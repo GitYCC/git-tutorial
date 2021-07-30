@@ -115,11 +115,101 @@ class Cat:
 - Add `src/cat.py` to *staging area*
 - Use `git status`, `git diff` and `git diff --cached` to check
 - Revert `src/cat.py` back to *working directory*
-
 - Use `git status`, `git diff` and `git diff --cached` to check
 - Commit function `__init__` and `get_name` with the message "[feature] Create cat"
 - Commit function `shout` with the message "[feature] Add function shout"
 - Use `git log --graph` to check history
+- Checkout to the branch `develop` and merge `feature/cat` by `git merge feature/cat`
+
+
+
+## 3 Commit
+
+### 3-1 Best practice of commit
+
+- Principle: One commit one action
+- Format of commit message
+  - `[feature] ...` :  create or change one feature
+  - `[refactor] ...` :  change your code without changing any feature
+  - `[config] ...` :  change config
+  - `[fix] ...` :  fix bugs which are introduced from pervious feature
+  - `[test] ...` :  create or change testing code
+  - `[clean] ...` :  remove some useless code without changing any feature
+  - `[doc] ...` :  create or change documentation
+
+- Common mistakes of commit message
+
+  - Commit messages are not readable.
+  - Changing your codes without organization causes orderless commit messages.
+  - Don't commit your codes after doing lots of actions (you should commit your codes after finishing one action)
+    - If you need to commit codes after doing lots of actions, you could use `git add -p FILE`.
+  - Don't commit lots of codes in one commit
+
+- Examples:
+  ![](assets/example_commit.png)
+
+### 3-2 Exercise
+
+- Create a new branch `feature/zoo` from `develop`
+- Create a file `main.py` in `src/` including following codes
+
+```python
+from dog import Dog
+from cat import Cat
+
+class Zoo:
+    def __init__(self):
+        self.animals = []
+      
+    def add(self, animal):
+				self.animals.append(animal)
+
+def main():
+  	zoo = Zoo()
+    zoo.add(Cat('May'))
+    zoo.add(Dog('Jacky'))
+
+if __name__ == '__main__':
+  	main()
+
+```
+
+- Commit the file `main.py` with the message "[feature] Add animals into zoo"
+- Extract the class `Zoo` to the single file `zoo.py`
+- Commit above change with the message "[refactor] Extract class Zoo into single file"
+- Add function `play` on `Zoo` as following:
+
+```python
+class Zoo:
+    def __init__(self):
+        self.animals = []
+      
+    def add(self, animal):
+				self.animals.append(animal)
+        
+    def play(self):
+      	for animal in self.animals:
+          	print(animal.shout())
+
+```
+
+- Commit above change with the message "[feature] Add function play on Zoo"
+- Revise `main.py` as following:
+
+```python
+# ...
+
+def main():
+  	zoo = Zoo()
+    zoo.add(Cat('May'))
+    zoo.add(Dog('Jacky'))
+    zoo.play()
+
+# ...
+```
+
+- Commit above change with the message "[feature] Play in zoo"
+
 
 
 
