@@ -7,3 +7,6 @@ class Dog:
     def get_name(self):
         return 'Dog ' + self.name
 
+    def get_color(self):
+        return self.color
+
