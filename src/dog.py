@@ -3,4 +3,7 @@ class Dog:
     def __init__(self, name, color=None):
         self.name = name
         self.color = color
-    
+
+    def get_name(self):
+        return 'Dog ' + self.name
+
