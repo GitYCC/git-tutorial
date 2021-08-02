@@ -10,3 +10,6 @@ class Dog:
     def get_color(self):
         return self.color
 
+    def shout(self):
+      	return 'Dog ' + self.name + ': woof~'
+
