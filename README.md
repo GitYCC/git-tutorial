@@ -209,6 +209,107 @@ def main():
 ```
 
 - Commit above change with the message "[feature] Play in zoo"
+- Checkout to the branch `develop` and merge `feature/zoo` by `git merge feature/zoo`
+
+
+
+## 4 Branch
+
+### 4-1 All of branchs
+
+- main branchs:
+  - `master`
+  - `develop`
+- supporting branchs:
+  - `feature/FEATURE-NAME`
+  - `release/RELEASE-VERSION`
+  - `hotfix/HOTFIX-NAME`
+
+### 4-2 Main branchs
+
+- `master`: production branch, usually connected with CICD to deploy
+- `develop`: develop branch
+- Main branchs must obey below rules:
+  - Must not change the history of git => avoid to delete important codes
+  - Must not change the codes directly on those branchs
+  - Use PR (Pull Request) to change the codes on those branchs
+
+### 4-3 Feature branch
+
+- branch format: `feature/FEATURE-NAME`
+- fork from `develop` and merge by PR
+- rule: one feature, one thing, keep it simple
+
+![](assets/img_feature_branch.png)
+
+### 4-4 Release branch
+
+- branch format: `release/RELEASE-VERSION`
+- Release branch includes some changes for production 
+- usually connected with CICD to trigger staging (fix bugs in release branch)
+- Until fixing bugs on staging, merge into both `master` and `develop` with PR
+- Tag version on `master` node
+  - ![](assets/img_version_rule.png)
+
+![](assets/img_release_branch.png)
+
+### 4-5 Hotfix branch
+
+- branch format: `hotfix/HOTFIX-NAME`
+- Find bugs after deploying production, fork hotfix branch from `master`
+- After fixed the bugs, merge into both `master` and `develop` with PR
+
+![](assets/img_hotfix_branch.png)
+
+
+
+### 4-6 Commands of branch
+
+- Create new branch and checkout: `git checkout -b BRANCH-NAME` 
+- Checkout branch: `git checkout BRANCH`
+- View branchs: `git branch`
+
+- Merge: `git merge BRANCH` (seldom use, usually merge by PR)
+  
+  - fast-forward merge
+    - ![](assets/img_branch_merge_1.gif)
+  
+  - no-fast-foward merge
+    - ![](assets/img_branch_merge_2.gif)
+  - merge conflicts
+    - ![](assets/img_branch_merge_3.gif)
+  
+- Rebase: `git rebase BRANCH`
+
+  - ![](assets/img_branch_rebase.gif)
+
+- Interactive Rebase: `git rebase -i NODE`
+
+  - ![](assets/img_branch_interactive_rebase_1.gif)
+  - ![](assets/img_branch_interactive_rebase_2.gif)
+
+- Soft Reset: `git reset --soft NODE` 
+
+  - ![](assets/img_branch_soft_reset.gif)
+
+- Hard Reset: `git reset --hard NODE`
+
+  - ![](assets/img_branch_hard_reset.gif)
+
+- Cherry-pick: `git cherry-pick NODE` 
+
+  - ![](assets/img_branch_cherry_pick.gif)
+
+- Fetch: `git fetch origin BRANCH ` 
+
+  - ![](assets/img_branch_fetch.gif)
+
+### 4-7 Exercise
+
+- Checkout to branch `feature/dog-with-color`
+- Rebase to `develop` (need to solve conflicts)
+- Cherry-pick the commmit in the branch `feature/add-data`
+- Try interactive rebase!
 
 
 
@@ -216,4 +317,11 @@ def main():
 ## Reference
 
 - Git - Book: [https://git-scm.com/book/en/v2](https://git-scm.com/book/en/v2)
+
+- git flow: https://nvie.com/posts/a-successful-git-branching-model/
+- git flow (chinese): https://medium.com/kuma%E8%80%81%E5%B8%AB%E7%9A%84%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E6%95%99%E5%AE%A4/%E5%9F%BA%E7%A4%8E-git-flow-%E5%B7%A5%E4%BD%9C%E6%B3%95-fa50b1dddc4f
+- 為你自己學Git: https://gitbook.tw
+- visualized git commands: https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1
+- git cheatsheet: https://github.com/LeCoupa/awesome-cheatsheets/blob/master/tools/git.sh
+- google code review: https://www.notion.so/Google-Code-Review-a275c5f3e017467a9b667e21c9521e39
 
