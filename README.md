@@ -79,6 +79,7 @@ $ git reset my_file.py
 Add a piece of code from *working directory* to *staging area*:
 
 ```
+$ git add -N my_file.py  # if my_file.py is a new file, add untracked file without their content first
 $ git add -p my_file.py
 ```
 
@@ -120,7 +121,7 @@ class Cat:
 - Commit function `shout` with the message "[feature] Add function shout"
 - Use `git log --graph` to check history
 - Checkout to the branch `develop` and merge `feature/cat` by `git merge feature/cat`
-
+- Use `git log --graph` to check history
 
 
 ## 3 Commit
