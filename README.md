@@ -163,15 +163,15 @@ class Zoo:
         self.animals = []
       
     def add(self, animal):
-				self.animals.append(animal)
+        self.animals.append(animal)
 
 def main():
-  	zoo = Zoo()
+    zoo = Zoo()
     zoo.add(Cat('May'))
     zoo.add(Dog('Jacky'))
 
 if __name__ == '__main__':
-  	main()
+    main()
 
 ```
 
@@ -184,13 +184,13 @@ if __name__ == '__main__':
 class Zoo:
     def __init__(self):
         self.animals = []
-      
+
     def add(self, animal):
-				self.animals.append(animal)
+        self.animals.append(animal)
         
     def play(self):
       	for animal in self.animals:
-          	print(animal.shout())
+            print(animal.shout())
 
 ```
 
@@ -201,7 +201,7 @@ class Zoo:
 # ...
 
 def main():
-  	zoo = Zoo()
+    zoo = Zoo()
     zoo.add(Cat('May'))
     zoo.add(Dog('Jacky'))
     zoo.play()
@@ -318,7 +318,6 @@ def main():
 ## Reference
 
 - Git - Book: [https://git-scm.com/book/en/v2](https://git-scm.com/book/en/v2)
-
 - git flow: https://nvie.com/posts/a-successful-git-branching-model/
 - git flow (chinese): https://medium.com/kuma%E8%80%81%E5%B8%AB%E7%9A%84%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E6%95%99%E5%AE%A4/%E5%9F%BA%E7%A4%8E-git-flow-%E5%B7%A5%E4%BD%9C%E6%B3%95-fa50b1dddc4f
 - 為你自己學Git: https://gitbook.tw
